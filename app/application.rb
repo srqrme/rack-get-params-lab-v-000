@@ -1,6 +1,7 @@
 class Application
 
   @@items = ["Apples","Carrots","Pears"]
+  #Create a new class array called @@cart to hold any items in your cart
   @@cart = []
 
   def call(env)
@@ -13,7 +14,8 @@ class Application
       end
     elsif req.path.match(/search/)
       search_term = req.params["q"]
-      resp.write handle_search(search_term)
+      resp.write handle_search(search_term
+    #Create a new route called /cart to show the items in your cart
     elsif req.path.match(/cart/)
       if @@cart.empty?
         resp.write "Your cart is empty"
@@ -22,8 +24,9 @@ class Application
           resp.write "#{item}\n"
         end
       end
+      #Create a new route called /add that
     elsif req.path.match(/add/)
-
+      #takes in a GET param with the key item.
       add_item = req.params["item"]
       if @@items.include? add_item
         @@cart << add_item
